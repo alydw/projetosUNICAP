@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Pesquisa </title>
+	<style type="text/css">
+		p,
+label {
+    font: 1rem 'Fira Sans', sans-serif;
+}
+
+input {
+    margin: .4rem;
+}
+
+
+	</style>
+</head>
+<body onload="marcado()">
+	<div align="center">
+		<fieldset style="width: 50%">
+<p>Quais aplicativos você usa com mais frequência? </p>
+</div>
+<div id="selecao" align="center">
+  <input type="checkbox" id="Facebook" name="checkbox" onchange="checksave(event)" value="Facebook">
+  <label for="face">Facebook</label>
+<br>
+  <input type="checkbox" id="Instagram" name="checkbox" onchange="checksave(event)" value="Instagram">
+  <label for="insta">Instagram</label>
+<br>
+  
+  <input type="checkbox" id="Whatsapp" name="checkbox" onchange="checksave(event)" value="Whatsapp">
+  <label for="wpp">Whatsapp</label>
+<br>
+  
+  <input type="checkbox" id="Telegram" name="checkbox" onchange="checksave(event)" value="Telegram">
+  <label for="tele">Telegram</label>
+  <br>
+  
+  <a href="pag2.html"> <button type="button" id="voltar" value="Voltar" button style="background: #069cc2; border-radius: 6px; padding: 10px; cursor: pointer; color: #fff; border: none; font-size: 12px;"> Voltar</button></a>
+  <a href="resultado.html"> <button type="button" id="fim" value="fim" button style="background: #069cc2; border-radius: 6px; padding: 10px; cursor: pointer; color: #fff; border: none; font-size: 12px;">Enviar</button></a>
+  </fieldset>
+</div>
+<script type="text/javascript">
+	if (localStorage.face) {
+		document.getElementById('face').value = localStorage.face;
+	}
+	if (localStorage.insta) {
+		document.getElementById('insta').value = localStorage.insta;
+	}
+	if (localStorage.wpp) {
+		document.getElementById('wpp').value = localStorage.wpp;
+	}
+	if (localStorage.tele) {
+		document.getElementById('tele').value = localStorage.tele;
+	}
+
+
+	let array1 = []
+
+
+	function checksave(event) {	
+		console.log(event.target.value); 
+	 
+	 console.log(array1)
+	 array1 = JSON.parse (localStorage.getItem('array'));
+	 if(!array1) {
+	 	array1 = [event.target.value];
+	 	console.log(array1);
+	 	localStorage.setItem('array', JSON.stringify(array1));
+	 } else {
+	 	array1 = JSON.parse(localStorage.getItem('array'));
+	 	let encontrar = array1.find(elemento => elemento == event.target.value);
+
+	 	if (encontrar) {
+	 		array1 = array1.filter(elemento => elemento != encontrar);
+	 		localStorage.setItem('array', JSON.stringify(array1));
+	 	} else {
+	 		array1.push(event.target.value);
+	 		console.log(array1);
+	 		localStorage.setItem('array', JSON.stringify(array1));
+	 	}
+	 }
+}
+		
+		function marcado (){
+			array1 = JSON.parse(localStorage.getItem('array'));
+			if (array1) {
+				array1.forEach(elemento => {
+			let campo = document.getElementById(elemento);
+			campo.checked = true;	
+			})
+			}
+			
+		}
+
+
+
+
+ 
+</script>
+
+</body>
+</html>

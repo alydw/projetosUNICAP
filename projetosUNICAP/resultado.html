@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Resultado</title>
+</head>
+<body>
+
+	<div id="respostas" align="center">
+	<h4> Suas respostas foram as seguintes: </h4>
+	
+	<p> Nome:
+	<pre id="respostas1"></pre>
+	</p>
+	<p> Qual sistema operacional você usa? E qual versão?
+	<pre id="respostas2"></pre>
+	</p>
+	<p> Você indicaria ele para alguém?
+	<pre id="respostas3"></pre>
+	</p>
+	<p> Por qual motivo?
+	<pre id="respostas4"></pre>
+	</p>
+	<p> Quais aplicativos você mais utiliza?
+	<pre id="respostas5"></pre>
+	</p>
+
+	<a href="pag3.html"> <button type="button" id="voltar" value="Voltar" button style="background: #069cc2; border-radius: 6px; padding: 10px; cursor: pointer; color: #fff; border: none; font-size: 12px;">  Voltar</button></a>
+	<a href="pesquisa.html"> <button type="button" id="enviar" value="enviar" button style="background: #069cc2; border-radius: 6px; padding: 10px; cursor: pointer; color: #fff; border: none; font-size: 12px;"> Nova pesquisa </button></a>
+</div>
+
+	<script type="text/javascript">
+		let array = JSON.parse(localStorage.array);
+
+	document.getElementById ("respostas1").innerHTML = localStorage.nome;
+	document.getElementById ("respostas2").innerHTML = localStorage.Pesquisa;
+	document.getElementById ("respostas3").innerHTML = localStorage.operacional;
+	document.getElementById ("respostas4").innerHTML = localStorage.select;
+	document.getElementById ("respostas5").innerHTML = array.reduce((total,elemento) => total+`<li>${elemento}</li>`,'');
+	
+	
+
+</script>
+
+</body>
+</html>

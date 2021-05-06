@@ -1,0 +1,44 @@
+<html>
+<head>
+	<title> Pesquisa </title>
+
+</head>
+
+<body>
+	
+	
+<div align = "center">
+	<fieldset style="width: 50%">
+<strong> Nome: </strong><input type="text" placeholder="Insira seu nome" id="nome"><br>
+<br>
+
+	<label for="story"> Qual sistema operacional você usa? </label><br>
+<textarea id="Pesquisa" name="pesquisa"
+          rows="5" cols="50" placeholder="Seu sistema e a versão utilizada">
+</textarea>
+<br>
+<br>
+<a href="pag2.html"> <button type="button" value="prox" button style="background: #069cc2; border-radius: 6px; padding: 10px; cursor: pointer; color: #fff; border: none; font-size: 12px;">Próximo</button></a>
+<pre id="result"></pre>
+</div>
+</fieldset>
+<script type="text/javascript">
+	if (localStorage.nome) {
+		document.getElementById('nome').value = localStorage.nome;
+	}
+	if (localStorage.Pesquisa) {
+		document.getElementById('Pesquisa').value = localStorage.Pesquisa;
+	}
+	var SalvarPes = function () {
+		var nome = document.getElementById('nome').value;
+		var Pesquisa = document.getElementById('Pesquisa').value;
+		localStorage.setItem('nome',nome);
+		localStorage.setItem('Pesquisa',Pesquisa);
+	}
+	document.onchange = SalvarPes; 
+
+</script>
+
+</body>
+
+</html>

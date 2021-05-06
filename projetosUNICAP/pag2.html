@@ -1,0 +1,89 @@
+<html>
+<head>
+	<title> Pesquisa </title>
+	<style type="text/css">
+ 	#pergunta{
+ 		display: none;
+ 	}
+ 	
+ 	
+ </style>
+</head>
+<body onload="atualizar()">
+	<div align="center">
+		<fieldset style="width: 50%">
+		
+	<p>				Você indicaria ele para alguém?
+		<br>
+                <input type="radio" name="operacional" onchange="saveStatus(event)" value="Sim" id="sim" /> Sim
+                <input type="radio" name="operacional" onchange="saveStatus(event)" value="Não" id="nao" /> Não
+                
+            </p>
+            <div id="pergunta">
+            	<p> Por qual motivo? </p>
+        	<input type="text" placeholder="..." name="opcao1" id="select" > 
+        	
+        </div>
+       
+            <p>
+            	<br>
+                <a href="pesquisa.html"> <button type="button" id="voltar" value="Voltar" button style="background: #069cc2; border-radius: 6px; padding: 10px; cursor: pointer; color: #fff; border: none; font-size: 12px;">  Voltar</button></a>
+                <a href="pag3.html"> <button type="button" id="prox" value="prox" button style="background: #069cc2; border-radius: 6px; padding: 10px; cursor: pointer; color: #fff; border: none; font-size: 12px;">Próximo</button></a>
+                </p>
+                </fieldset>
+                </div>
+        
+        <script type="text/javascript">
+        	document.getElementById("sim").onclick = function(){
+   			document.getElementById("pergunta").style.display = "none";
+}
+		document.getElementById("nao").onclick = function(){
+   		document.getElementById("pergunta").style.display = "block";
+}
+	//function SaveRadio (radioname) {
+  //var radioselect = localStorage.getItem(radioname);
+  //var radiobox = document.getElementsByName(radioname);
+
+  function saveStatus(event){
+    localStorage.setItem('operacional', event.target.value);
+ 	if (event.target.value = 'Sim')  {
+ 		document.getElementById('select').value = '';
+ 		localStorage.removeItem('select');
+ 	} 
+  };
+ 	
+ 	//}
+function atualizar(){
+ 		var loc = localStorage.getItem('operacional');
+ 		console.log(loc);
+ 		if (loc == 'Não'){
+ 			document.getElementById('nao').checked = true;
+ 			document.getElementById('pergunta').style.display = "block";
+ 		
+ 		}else {
+ 			document.getElementById('sim').checked = true;
+ 			document.getElementById('pergunta').style.display = "none";
+ 		}
+    };
+
+
+//SaveRadio('operacional');
+
+if (localStorage.select){
+document.getElementById('select').value = localStorage.select;
+  }
+
+  var SaveSelect = function (){
+  	var select = document.getElementById('select').value;
+  	localStorage.setItem('select', select);
+  }
+document.onchange = SaveSelect;
+		
+        </script>
+
+
+        
+
+
+</body>
+</html>
